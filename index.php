@@ -63,7 +63,8 @@ class Calls {
 
 }
 
-$url = "localhost:8080/YaxaRepositories/yaxaws/API/V1/greenclick/importProducts";
+/*Casa*///$url = "localhost:8080/YaxaRepositories/yaxaws/API/V1/greenclick/importProducts";
+/*Trabajo*/$url = "localhost/YaxaRepositories/yaxaws/API/V1/greenclick/importProducts";
 $data = array("test" => "Al menos entra");
 $a = new Calls();
 $string = $a->CallAPIbyCurl("POST", $url, $data);
