@@ -1,12 +1,29 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Test de YaxaWs</title>
+    </head>
+    <body>
+        <?php
+        // put your code here
+        ?>
+    </body>
+</html>
 <?php
-
-$url = "http://localhost/YaxaRepositories/yaxaws/API/V1/test/testobjeto";
 
 class Calls {
 
     public function CallAPIbyCurl($method, $url, $data = false) {
         $curl = curl_init();
         $query = null;
+
+
         switch ($method) {
             case "POST":
                 curl_setopt($curl, CURLOPT_POST, 1);
@@ -46,24 +63,10 @@ class Calls {
 
 }
 
-class Prueba {
-
-    private $tipo = "Este es un objeto";
-
-    public function pruebaObjeto() {
-        return $this->tipo;
-    }
-
-}
-
-$miObjeto = new Prueba();
-
-$miArray = array("name" => $miObjeto->pruebaObjeto(), "age" => 25);
-$miClase = new Calls();
-$a = $miClase->CallAPIbyCurl("POST", $url, $miArray);
+$url = "localhost:8080/YaxaRepositories/yaxaws/API/V1/greenclick/importProducts";
+$data = array("test" => "Al menos entra");
+$a = new Calls();
+$string = $a->CallAPIbyCurl("POST", $url, $data);
 echo "<pre>";
-var_dump(json_decode($a));
-echo "</pre>";
-echo "<pre>";
-echo(($miObjeto->pruebaObjeto()));
+var_dump(($string));
 echo "</pre>";
