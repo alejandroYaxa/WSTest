@@ -48,7 +48,8 @@ class Calls {
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT ,0); 
+        curl_setopt($curl, CURLOPT_TIMEOUT, 60); //timeout in seconds
         $result = curl_exec($curl);
 
         curl_close($curl);
@@ -64,10 +65,17 @@ class Calls {
 }
 
 /*Casa*///$url = "localhost:8080/YaxaRepositories/yaxaws/API/V1/greenclick/importProducts";
-/*Trabajo*/$url = "localhost/YaxaRepositories/yaxaws/API/V1/greenclick/importProducts";
-$data = array("test" => "Al menos entra");
+/*Trabajo*/$url = "localhost/YaxaRepositories/yaxaws/API/V1/Yaxaco/getProducts";
+$data = array(
+    'category' => 6,
+    'noSearch' =>array('krono_code','iatai'),
+    'patternSearch' => 'video',
+    'qty' => 10
+    );
 $a = new Calls();
 $string = $a->CallAPIbyCurl("POST", $url, $data);
-echo "<pre>";
-var_dump(($string));
-echo "</pre>";
+//echo "<pre>";
+$da = json_decode($string);
+$v = json_decode($da);
+var_dump ($v);
+//echo "</pre>";
